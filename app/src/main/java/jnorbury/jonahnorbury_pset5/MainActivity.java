@@ -28,13 +28,15 @@ public class MainActivity extends AppCompatActivity {
         if(configInfo.orientation == Configuration.ORIENTATION_LANDSCAPE){
             FragmentLandscape fragmentLandscape = new FragmentLandscape();
 
-            fragmentTransaction.replace(android.R.id.content, fragmentLandscape)
+            fragmentTransaction.replace(android.R.id.content, fragmentLandscape);
 
         } else {
             FragmentPortrait fragmentPortrait = new FragmentPortrait();
 
             fragmentTransaction.replace(android.R.id.content, fragmentPortrait);
         }
+
+        fragmentTransaction.commit();
 
     }
 
