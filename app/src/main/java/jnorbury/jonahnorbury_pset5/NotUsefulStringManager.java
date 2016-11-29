@@ -13,21 +13,14 @@ public class NotUsefulStringManager {
 
     // counstructor is private!
     private NotUsefulStringManager() {
-
         superUsefulString = "This is the initials String";
-
-
     }
 
     public void setSuperUsefulString(String newString) {
-
         superUsefulString = newString;
-
     }
 
     public String getSuperUsefulString(){
-
         return superUsefulString;
-
     }
 }
