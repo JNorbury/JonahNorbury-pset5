@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">JonahNorbury-pset5</string>
+    <string name="your_to_do_lists_text_view">Your To-Do Lists</string>
+    <string name="create_list_text_view">Create List</string>
+    <string name="groceries_radio_button_text">Groceries</string>
+    <string name="homework_radio_button_text">Homework</string>
 </resources>

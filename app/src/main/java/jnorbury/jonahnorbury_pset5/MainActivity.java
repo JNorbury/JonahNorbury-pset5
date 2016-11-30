@@ -1,5 +1,6 @@
 package jnorbury.jonahnorbury_pset5;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,34 +18,40 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.acitivty_main_layout);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        Configuration configInfo = getResources().getConfiguration();
 
-        Configuration configInfo = getResources().getConfiguration();
+//        if(configInfo.orientation == Configuration.ORIENTATION_LANDSCAPE){
+//            FragmentLandscape fragmentLandscape = new FragmentLandscape();
+//
+//            fragmentTransaction.replace(android.R.id.content, fragmentLandscape);
+//
+//        } else {
+//            FragmentPortrait fragmentPortrait = new FragmentPortrait();
+//
+//            fragmentTransaction.replace(android.R.id.content, fragmentPortrait);
+//        }
 
-        if(configInfo.orientation == Configuration.ORIENTATION_LANDSCAPE){
-            FragmentLandscape fragmentLandscape = new FragmentLandscape();
-
-            fragmentTransaction.replace(android.R.id.content, fragmentLandscape);
-
-        } else {
-            FragmentPortrait fragmentPortrait = new FragmentPortrait();
-
-            fragmentTransaction.replace(android.R.id.content, fragmentPortrait);
-        }
-
-        fragmentTransaction.commit();
+//        fragmentTransaction.commit();
 
     }
 
     public void setUsefulString(View view) {
 
-        EditText et = (EditText) findViewById(R.id.editText);
-        manager = NotUsefulStringManager.getInstance();
-        manager.setSuperUsefulString(et.getText().toString());
+//        EditText et = (EditText) findViewById(R.id.editText);
+//        manager = NotUsefulStringManager.getInstance();
+//        manager.setSuperUsefulString(et.getText().toString());
+
+    }
+
+    public void makeNewList(View view) {
+        Intent intent = new Intent(this, AddListActivity.class);
+        startActivity(intent);
 
     }
 }
