@@ -4,4 +4,8 @@
     <string name="create_list_text_view">Create List</string>
     <string name="groceries_radio_button_text">Groceries</string>
     <string name="homework_radio_button_text">Homework</string>
+    <string name="add_new_list_button_text">Add New List</string>
+    <string name="empty_text_view_global">empty</string>
+    <string name="due_date_none_text_view">due date none for now</string>
+    <string name="add_item_button_text">Add item</string>
 </resources>

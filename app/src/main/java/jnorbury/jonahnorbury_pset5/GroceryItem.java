@@ -5,5 +5,18 @@ package jnorbury.jonahnorbury_pset5;
  */
 
 public class GroceryItem extends TodoItem {
+    private double weight;
 
+    public GroceryItem(String name, double weight) {
+        super(name);
+        this.weight = weight;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
 }

@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // fields of db
     private static final String DATABASE_NAME = "myDB.db";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE = "tasks";
+    private static final String TABLE = "lists";
 
     public static String task_name;
 
@@ -30,9 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //onCreate
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String CREATE_TABLE = "CREATE TABLE " + TABLE +
-                " (_id INTEGER PRIMARY KEY AUTOINCREMENT, task_name TEXT)";
-        sqLiteDatabase.execSQL(CREATE_TABLE);
+        String CREATE_TABLE = "CREATE TABLE " + TABLE + "( `_id` int(10) NOT NULL AUTO_INCREMENT, `name` varchar(50) NOT NULL, `completed` tinyint(1) NOT NULL DEFAULT '0', `due_date` date DEFAULT NULL, `rating` float DEFAULT NULL, `picture` int(11) DEFAULT NULL, `extra_description` varchar(144) DEFAULT NULL, `list_type` varchar(30) NOT NULL, PRIMARY KEY (`_id`), UNIQUE KEY `name` (`name`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1; sqLiteDatabase.execSQL(CREATE_TABLE)";
     }
 
     //onUpgrade

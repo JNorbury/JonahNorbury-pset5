@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class GroceryItemAdapter extends ArrayAdapter<GroceryItem>{
     private ArrayList<GroceryItem> groceries;
     public GroceryItemAdapter(Context context, int textViewResourceId,
-                              ArrayList<GroceryItem> groceries) {
+                              GroceryList groceries) {
         super(context, textViewResourceId, groceries);
         this.groceries = groceries;
     }
@@ -27,16 +27,15 @@ public class GroceryItemAdapter extends ArrayAdapter<GroceryItem>{
     public View getView(int position, View v, ViewGroup parent) {
         if (v == null) {
             LayoutInflater vi = (LayoutInflater)getContext().getSystemService(getContext().LAYOUT_INFLATER_SERVICE);
-            v = vi.inflate(R.layout.listlayout_grocery, null);
+            v = vi.inflate(R.layout.grocery_list_item_layout, null);
         }
         GroceryItem item = groceries.get(position);
         if (item != null) {
             TextView name = (TextView) v.findViewById(R.id.task_name);
             CheckBox completed = (CheckBox) v.findViewById(R.id.completedgrocery);
             if (name != null) {
-                name.setText(item.getTitle());
-            }
-            if(completed != null) {
+                name.setText(item.getName());
+            } else if(completed != null) {
                 completed.setChecked(item.getCompleted());
             }
         }

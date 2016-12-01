@@ -23,14 +23,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/radioButton2"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="18sp" />
 
         <RadioButton
             android:text="@string/homework_radio_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/radioButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="18sp" />
     </RadioGroup>
 
     <TextView
@@ -50,5 +54,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/button2"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-condensed" />
 </RelativeLayout>

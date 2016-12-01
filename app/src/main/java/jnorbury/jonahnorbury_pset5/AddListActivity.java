@@ -9,31 +9,35 @@ import android.widget.Toast;
 
 public class AddListActivity extends AppCompatActivity {
 
+    private RadioButton rbtn;
+    private RadioGroup rg;
+    private String ltype;
+    private ToDoList list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_list);
     }
 
+    // allow user to select type of list to add
     public void addListofTypeRadio(View view) {
-        RadioGroup rg = (RadioGroup) findViewById(R.id.listsRadioGroup);
-        RadioButton rbtn = (RadioButton) rg.findViewById(rg.getCheckedRadioButtonId());
-        int idx = rg.indexOfChild(rbtn);
+        rg = (RadioGroup) findViewById(R.id.listsRadioGroup);
+        rbtn = (RadioButton) rg.findViewById(rg.getCheckedRadioButtonId());
+        if (rbtn == null) { // check whether no button is clicked
+            Toast.makeText(this, "no list given, doofus", Toast.LENGTH_SHORT).show();
+        } else { //else grab ltype string
+            ltype = rbtn.getText().toString();
 
-        String w = rbtn.getText().toString();
-//        Toast.makeText(this, "idx " + idx + ". : " + w, Toast.LENGTH_SHORT).show();
-
-        if (w.equals("Groceries")) {
-            // make new grocerylist
-            GroceryList gl = new GroceryList();
-            ToDoManager.getInstance().addList(gl);
-//            Toast.makeText(this, "added gl: " + gl.size(), Toast.LENGTH_SHORT).show();
-
-        } else if (w.equals("Homework")) {
-            // make new homeworklist
+            // check what type of list is added and create list of type
+            if (ltype.equals("Groceries")) {
+                GroceryList list = new GroceryList("grocerylist2");
+                ToDoListManager.getInstance().addList(list);
+            } else if (ltype.equals("Homework")) {
+                HomeworkList list = new HomeworkList("hwlist2");
+                ToDoListManager.getInstance().addList(list);
+            }
+            finish();
         }
-        Toast.makeText(this, "no of lists: " + ToDoManager.getlist().size(), Toast.LENGTH_SHORT).show();
-
-        finish();
     }
 }
