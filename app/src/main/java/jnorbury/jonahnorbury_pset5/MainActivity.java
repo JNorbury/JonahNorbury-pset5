@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
         ListView glv = (ListView) findViewById(R.id.genericListView);
         ToDoList test = masterList.get(1);
-        ArrayAdapter aa = test.;
+        // this is where we call the smart adapter
+//        ArrayAdapter aa = test;
         glv.setAdapter(aa);
 
 //        ArrayList<ToDoList> list = ToDoListManager.getAllLists();
