@@ -18,6 +18,6 @@ public class GroceryList<GroceryItem> extends ToDoList {
     }
 
     public GroceryList(String list_name) {
-        super(list_name);
+        super.setList_name(list_name);
     }
 }

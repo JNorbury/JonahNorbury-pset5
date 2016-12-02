@@ -8,7 +8,7 @@ public class GroceryItem extends TodoItem {
     private double weight;
 
     public GroceryItem(String name, double weight) {
-        super(name);
+        super.setName(name);
         this.weight = weight;
     }
 

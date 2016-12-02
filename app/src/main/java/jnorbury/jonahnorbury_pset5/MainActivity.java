@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
         llv.setAdapter(mla);
 
         ListView glv = (ListView) findViewById(R.id.genericListView);
-        ArrayAdapter aa = masterList.get(1).getAdapter(getBaseContext());
+        ToDoList test = masterList.get(1);
+        ArrayAdapter aa = test.;
         glv.setAdapter(aa);
 
 //        ArrayList<ToDoList> list = ToDoListManager.getAllLists();

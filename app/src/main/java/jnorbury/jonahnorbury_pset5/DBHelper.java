@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE = "lists";
 
-    public static String task_name;
+    public static String name;
 
     // constructor
     public DBHelper(Context context) {
@@ -64,7 +64,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
             do {
                 HashMap<String, String> taskdata = new HashMap<>();
-                taskdata.put("task_name", crs.getString(crs.getColumnIndex("_id")) + " - " + crs.getString(crs.getColumnIndex("task_name")));
+                taskdata.put("name", crs.getString(crs.getColumnIndex("_id")) + " - " + crs.getString(crs.getColumnIndex("task_name")));
                 taskdb.add(taskdata);
             }
             while(crs.moveToNext());
@@ -86,6 +86,8 @@ public class DBHelper extends SQLiteOpenHelper {
 //        db.close();
 //
 //    }
+
+//    public void
 
     // delete
     public void delete(int id) {

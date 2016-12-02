@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 
 public class HomeworkList<HomeworkItem> extends ToDoList {
     public HomeworkList(String s) {
-        super(s);
+        super.setList_name(s);
     }
 
     public ArrayAdapter getAdapter(Context context) {
