@@ -15,7 +15,9 @@ import java.util.ArrayList;
  */
 
 public class MasterListAdapter extends ArrayAdapter<ToDoList> {
+
     private ArrayList<ToDoList> masterlist;
+
     public MasterListAdapter(Context context, int textViewResourceId,
                              ArrayList<ToDoList> masterlist) {
         super(context, textViewResourceId, masterlist);
@@ -44,5 +46,9 @@ public class MasterListAdapter extends ArrayAdapter<ToDoList> {
             }
         }
         return v;
+    }
+
+    public ToDoList getItem(int position){
+        return masterlist.get(position);
     }
 }

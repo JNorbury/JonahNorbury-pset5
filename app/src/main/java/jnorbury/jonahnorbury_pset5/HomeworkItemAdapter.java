@@ -33,15 +33,19 @@ public class HomeworkItemAdapter extends ArrayAdapter<HomeworkItem>{
         }
         HomeworkItem item = assignments.get(position);
         if (item != null) {
+
             TextView name = (TextView) v.findViewById(R.id.text_view_task_name);
-            CheckBox completed = (CheckBox) v.findViewById(R.id.completedhomework);
-            TextView duedate = (TextView) v.findViewById(R.id.text_view_due_date);
             if (name != null) {
                 name.setText(item.getName());
             }
-            if(completed != null) {
-                completed.setChecked(item.getCompleted());
+
+            CheckBox checkBox = (CheckBox) v.findViewById(R.id.completedhomework);
+            if(checkBox != null) {
+                checkBox.setChecked(item.getCompleted());
+                checkBox.setTag(position);
             }
+
+            TextView duedate = (TextView) v.findViewById(R.id.text_view_due_date);
             if (duedate != null) {
                 duedate.setText(item.getDue_date());
             }

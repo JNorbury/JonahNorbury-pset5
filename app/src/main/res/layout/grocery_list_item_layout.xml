@@ -7,7 +7,7 @@
     <CheckBox android:id="@+id/completedgrocery"
         android:layout_width="wrap_content"
         android:checked="false"
-
+        android:onClick="onCheckBoxClicked"
         android:layout_height="wrap_content" />
 
     <TextView android:id="@+id/task_name"

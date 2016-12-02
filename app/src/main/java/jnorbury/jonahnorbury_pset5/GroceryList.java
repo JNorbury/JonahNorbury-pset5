@@ -12,7 +12,7 @@ import static android.R.attr.id;
  */
 
 public class GroceryList<GroceryItem> extends ToDoList {
-    // class is as basic as it gets in terms of todolists
+
     public ArrayAdapter getAdapter(Context context) {
         return new GroceryItemAdapter(context, R.layout.grocery_list_item_layout, this);
     }
@@ -20,4 +20,5 @@ public class GroceryList<GroceryItem> extends ToDoList {
     public GroceryList(String list_name) {
         super.setList_name(list_name);
     }
+
 }

@@ -7,7 +7,7 @@
     <CheckBox android:id="@+id/completedhomework"
         android:layout_width="wrap_content"
         android:checked="false"
-
+        android:onClick="onCheckBoxClicked"
         android:layout_height="wrap_content"/>
 
     <LinearLayout android:orientation="vertical"
@@ -22,7 +22,7 @@
             android:textSize="18sp"
             android:text="@string/empty_text_view_global"
             android:layout_weight="0.91"
-            android:textAlignment="textStart" />
+            android:textAlignment="viewStart" />
 
         <TextView
             android:text="@string/due_date_none_text_view"

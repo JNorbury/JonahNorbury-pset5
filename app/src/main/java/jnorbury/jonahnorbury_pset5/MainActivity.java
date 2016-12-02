@@ -1,18 +1,14 @@
 package jnorbury.jonahnorbury_pset5;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
+import android.widget.CheckBox;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acitivty_main_layout);
+        setContentView(R.layout.activity_main_layout);
         manager = ToDoListManager.getInstance();
 
-        GroceryList groceryList = new GroceryList("grocery1");
+        GroceryList groceryList = new GroceryList("jerry1");
         groceryList.add(new GroceryItem("bananas", 1.5));
         groceryList.add(new GroceryItem("eggs", 12));
         groceryList.add(new GroceryItem("pancake mix", 0.75));
@@ -37,7 +33,15 @@ public class MainActivity extends AppCompatActivity {
         itemnew.setCompleted(Boolean.TRUE);
         groceryList.add(itemnew);
 
-        HomeworkList homeworkList = new HomeworkList("homework1");
+        HomeworkList homeworkList = new HomeworkList("jonah1");
+        homeworkList.add(new HomeworkItem("assignment 1", "21-12-2016"));
+        homeworkList.add(new HomeworkItem("test 1", "21-11-2016"));
+        homeworkList.add(new HomeworkItem("seminar", "21-2-2016"));
+        homeworkList.add(new HomeworkItem("assignment 2", "1-12-2002"));
+        homeworkList.add(new HomeworkItem("assignment 1", "21-12-2016"));
+        homeworkList.add(new HomeworkItem("test 1", "21-11-2016"));
+        homeworkList.add(new HomeworkItem("seminar", "21-2-2016"));
+        homeworkList.add(new HomeworkItem("assignment 2", "1-12-2002"));
         homeworkList.add(new HomeworkItem("assignment 1", "21-12-2016"));
         homeworkList.add(new HomeworkItem("test 1", "21-11-2016"));
         homeworkList.add(new HomeworkItem("seminar", "21-2-2016"));
@@ -61,12 +65,24 @@ public class MainActivity extends AppCompatActivity {
         ListView llv = (ListView) findViewById(R.id.listsListView);
         mla = new MasterListAdapter(this, android.R.layout.simple_list_item_1, masterList);
         llv.setAdapter(mla);
+        llv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ToDoList list = mla.getItem(position);
 
-        ListView glv = (ListView) findViewById(R.id.genericListView);
-        ToDoList test = masterList.get(1);
-        // this is where we call the smart adapter
-//        ArrayAdapter aa = test;
-        glv.setAdapter(aa);
+                ListView glv = (ListView) findViewById(R.id.genericListView);
+
+                ArrayAdapter aa = list.getAdapter(getBaseContext());
+                glv.setAdapter(aa);
+                aa.notifyDataSetChanged();
+            }
+        });
+
+//        ListView glv = (ListView) findViewById(R.id.genericListView);
+//        ToDoList test = masterList.get(1);
+//        ArrayAdapter aa = test.getAdapter(this);
+//        glv.setAdapter(aa);
+//        aa.notifyDataSetChanged();
 
 //        ArrayList<ToDoList> list = ToDoListManager.getAllLists();
     }
@@ -79,5 +95,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewItem(View view) {
 //        Intent intent = new Intent(this, )
+    }
+
+
+
+    public void onCheckBoxClicked(View view) {
+        CheckBox cb = (CheckBox) view;
+
+
+        Toast.makeText(this, "finished " + cb.getTag() + "!", Toast.LENGTH_SHORT).show();
     }
 }
