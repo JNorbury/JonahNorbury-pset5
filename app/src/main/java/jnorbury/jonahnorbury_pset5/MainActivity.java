@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private ToDoListManager manager;
     private MasterListAdapter mla;
     private MasterList masterList;
+    private ArrayAdapter aa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,18 +62,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fixLists() {
-        // do shit to make lists appear in listview
         ListView llv = (ListView) findViewById(R.id.listsListView);
         mla = new MasterListAdapter(this, android.R.layout.simple_list_item_1, masterList);
         llv.setAdapter(mla);
+
+        // on click for masterlist
         llv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ToDoList list = mla.getItem(position);
 
+                // change colour of item at position should occur
+//                parent.getChildAt(position).setBackgroundColor(R.drawable.bg_key);
+
                 ListView glv = (ListView) findViewById(R.id.genericListView);
 
-                ArrayAdapter aa = list.getAdapter(getBaseContext());
+                aa = list.getAdapter(getBaseContext());
                 glv.setAdapter(aa);
                 aa.notifyDataSetChanged();
             }
@@ -102,6 +107,11 @@ public class MainActivity extends AppCompatActivity {
     public void onCheckBoxClicked(View view) {
         CheckBox cb = (CheckBox) view;
 
+        String tag = (String) cb.getTag();
+
+
+
+        // get item from
 
         Toast.makeText(this, "finished " + cb.getTag() + "!", Toast.LENGTH_SHORT).show();
     }

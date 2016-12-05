@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_add_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,50 +11,119 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jnorbury.jonahnorbury_pset5.AddListActivity">
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:id="@+id/listsRadioGroup"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="102dp">
-
-        <RadioButton
-            android:text="@string/groceries_radio_button_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radioButton2"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:text="@string/homework_radio_button_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radioButton"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="18sp" />
-    </RadioGroup>
-
     <TextView
         android:text="Choose a type of List"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView"
+        android:id="@+id/chooseListTV"
         android:textSize="30sp"
         android:fontFamily="sans-serif-condensed" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/nameListET"
+        android:hint="enter name here"
+        android:textAlignment="center"
+        android:layout_below="@+id/listsRadioGroup"
+        android:layout_centerHorizontal="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:id="@+id/listsRadioGroup"
+        android:paddingTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chooseListTV"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:text="@string/groceries_radio_button_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/groceriesRB"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:text="@string/homework_radio_button_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/homeworkRB"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/appIdeaRB"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/app_idea_list_radio_button_text"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="30dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton4"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton3"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:text="RadioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioButton2"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RadioGroup>
 
     <Button
         android:text="@string/create_list_text_view"
         android:layout_width="wrap_content"
         android:onClick="addListofTypeRadio"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="sans-serif-condensed" />
+        android:id="@+id/CreateListBTN"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_below="@+id/nameListET"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

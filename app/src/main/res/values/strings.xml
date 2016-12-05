@@ -8,4 +8,5 @@
     <string name="empty_text_view_global">empty</string>
     <string name="due_date_none_text_view">due date none for now</string>
     <string name="add_item_button_text">Add item</string>
+    <string name="app_idea_list_radio_button_text">App Idea</string>
 </resources>
