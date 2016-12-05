@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="jnorbury.jonahnorbury_pset5.AddItemActivity">
+    tools:context="jnorbury.jonahnorbury_pset5.AddGroceryItemActivity">
     
     <TextView
         android:layout_width="wrap_content"
@@ -27,17 +27,29 @@
         android:id="@+id/NewItemNameET"
         android:layout_below="@id/titletextviewname"
         android:fontFamily="sans-serif-condensed"
-        android:hint="name"
+        android:hint="grocery item name"
         android:background="@drawable/border"
         android:padding="10dp"
         />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/NewItemNameET"
+        android:id="@+id/newWeightET"
+        android:inputType="numberDecimal"
+        android:hint="@string/request_weight_et"
+        android:background="@drawable/border"
+        android:padding="10dp"
+        android:fontFamily="sans-serif-condensed"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/NewItemNameET"
+        android:layout_below="@+id/newWeightET"
         android:fontFamily="sans-serif-condensed"
         android:onClick="saveNewItemData"
-        android:text="add item"/>
+        android:text="@string/add_item_button_text"
+        android:id="@+id/button2" />
 
 </RelativeLayout>

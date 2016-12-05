@@ -33,10 +33,12 @@ public class GroceryItemAdapter extends ArrayAdapter<GroceryItem>{
         if (item != null) {
             TextView name = (TextView) v.findViewById(R.id.task_name);
             CheckBox completed = (CheckBox) v.findViewById(R.id.completedgrocery);
-            if (name != null) {
+            if (name != null && completed != null) {
                 name.setText(item.getName());
-            } else if(completed != null) {
                 completed.setChecked(item.getCompleted());
+                completed.setTag(position);
+            } else {
+                return null;
             }
         }
         return v;

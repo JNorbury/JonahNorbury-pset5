@@ -3,11 +3,13 @@ package jnorbury.jonahnorbury_pset5;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private MasterListAdapter mla;
     private MasterList masterList;
     private ArrayAdapter aa;
+    private ToDoList current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +32,7 @@ public class MainActivity extends AppCompatActivity {
         groceryList.add(new GroceryItem("eggs", 12));
         groceryList.add(new GroceryItem("pancake mix", 0.75));
         groceryList.add(new GroceryItem("milk", 4));
-
-        GroceryItem itemnew = new GroceryItem("beb: true!", 0.5);
-        itemnew.setCompleted(Boolean.TRUE);
-        groceryList.add(itemnew);
+        groceryList.add(new GroceryItem("beb: true!", 0.5));
 
         HomeworkList homeworkList = new HomeworkList("jonah1");
         homeworkList.add(new HomeworkItem("assignment 1", "21-12-2016"));
@@ -70,16 +70,15 @@ public class MainActivity extends AppCompatActivity {
         llv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ToDoList list = mla.getItem(position);
+                current = mla.getItem(position);
+                TextView titlehome = (TextView) findViewById(R.id.masterTitleTextView);
+                titlehome.setText("Current list: " + current.getList_name());
 
-                // change colour of item at position should occur
-//                parent.getChildAt(position).setBackgroundColor(R.drawable.bg_key);
+            ListView glv = (ListView) findViewById(R.id.genericListView);
 
-                ListView glv = (ListView) findViewById(R.id.genericListView);
-
-                aa = list.getAdapter(getBaseContext());
-                glv.setAdapter(aa);
-                aa.notifyDataSetChanged();
+            aa = current.getAdapter(getBaseContext());
+            glv.setAdapter(aa);
+            aa.notifyDataSetChanged();
             }
         });
 
@@ -100,19 +99,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void addNewItem(View view) {
 //        Intent intent = new Intent(this, )
+        Intent intent = new Intent(this, AddGroceryItemActivity.class);
+        intent.putExtra("listname", current.getList_name());
     }
-
-
 
     public void onCheckBoxClicked(View view) {
         CheckBox cb = (CheckBox) view;
+        TodoItem item = current.get((int) cb.getTag());
 
-        String tag = (String) cb.getTag();
+        if (cb.isChecked()) {
+            item.setCompleted(true);
+            Toast.makeText(this, "finished " + item.getName() + " !", Toast.LENGTH_SHORT).show();
+        } else {
+            item.setCompleted(false);
+            Toast.makeText(this, "didn't finish " + item.getName() + " anyway?", Toast.LENGTH_SHORT).show();
+        }
 
-
-
-        // get item from
-
-        Toast.makeText(this, "finished " + cb.getTag() + "!", Toast.LENGTH_SHORT).show();
     }
 }

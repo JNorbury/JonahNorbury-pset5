@@ -23,7 +23,9 @@ public class AddListActivity extends AppCompatActivity {
     // allow user to select type of list to add
     public void addListofTypeRadio(View view) {
         rg = (RadioGroup) findViewById(R.id.listsRadioGroup);
-        rbtn = (RadioButton) rg.findViewById(rg.getCheckedRadioButtonId());
+        int cid = rg.getCheckedRadioButtonId();
+        View rview = rg.findViewById(cid);
+        rbtn = (RadioButton) rg.getChildAt(cid);
         if (rbtn == null) { // check whether no button is clicked
             Toast.makeText(this, "no list given, doofus", Toast.LENGTH_SHORT).show();
         } else { //else grab ltype string

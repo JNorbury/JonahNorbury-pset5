@@ -8,7 +8,7 @@ public class AppIdeaItem extends TodoItem {
     private String description;
 
     public AppIdeaItem(String name, String description) {
-        super(null, name, false);
+        super(name);
         this.description = description;
     }
 

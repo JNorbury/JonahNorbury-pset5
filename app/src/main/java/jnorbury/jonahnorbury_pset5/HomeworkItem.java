@@ -9,7 +9,7 @@ public class HomeworkItem extends TodoItem {
     private String due_date;
 
     public HomeworkItem(String name, String due_date) {
-        super(null, name, false);
+        super(name);
         this.due_date = due_date;
     }
 
