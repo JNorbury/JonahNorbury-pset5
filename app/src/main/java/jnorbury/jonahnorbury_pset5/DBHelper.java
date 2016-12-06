@@ -62,13 +62,14 @@ public class DBHelper extends SQLiteOpenHelper {
         if (crs.moveToFirst()) {
             do {
                 MasterList listdata = new MasterList();
-                String cs = crs.getString(crs.getColumnIndex("listName");
+                String cs = crs.getString(crs.getColumnIndex("listName"));
                 for (int i = 0; i < listdata.size(); i++) {
-                    if (cs.matches(listdata.get(i).getList_name()) {
+                    if (cs.matches(listdata.get(i).getList_name())) {
                         break;
                     }
                 }
-                listdata.add(dblist);
+                ToDoList list =
+                listdata.add(listdata);
                 dblist.add(listdata);
             }
             while(crs.moveToNext());
