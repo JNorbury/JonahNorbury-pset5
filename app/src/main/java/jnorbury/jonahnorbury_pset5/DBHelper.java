@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,16 +43,41 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    // crud methods
-
+    // CRUD methods
     // create
-//    public void create(ToDoTask task) {
-//        SQLiteDatabase db = getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put("task_name", task.getToDoTask_name());
-//        db.insert(TABLE, null, values);
-//        db.close();
-//    }
+    public void create(TodoItem task) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("task_name", task.getName());
+
+        db.insert(TABLE, null, values);
+        db.close();
+    }
+
+    public ArrayList<ToDoList> readlists() {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT listName FROM " + TABLE;
+        ArrayList<ToDoList> dblist = new ArrayList<>();
+        Cursor crs = db.rawQuery(query, null);
+        if (crs.moveToFirst()) {
+            do {
+                MasterList listdata = new MasterList();
+                String cs = crs.getString(crs.getColumnIndex("listName");
+                for (int i = 0; i < listdata.size(); i++) {
+                    if (cs.matches(listdata.get(i).getList_name()) {
+                        break;
+                    }
+                }
+                listdata.add(listdata);
+                dblist.add(listdata);
+            }
+            while(crs.moveToNext());
+        }
+        crs.close();
+        db.close();
+        return dblist;
+
+    }
 
     // read
     public ArrayList<HashMap<String, String>> read() {

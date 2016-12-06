@@ -20,37 +20,15 @@ public class MainActivity extends AppCompatActivity {
     private MasterList masterList;
     private ArrayAdapter aa;
     private ToDoList current;
+    private DBHelper dbh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_layout);
         manager = ToDoListManager.getInstance();
-
-        GroceryList groceryList = new GroceryList("jerry1");
-        groceryList.add(new GroceryItem("bananas", 1.5));
-        groceryList.add(new GroceryItem("eggs", 12));
-        groceryList.add(new GroceryItem("pancake mix", 0.75));
-        groceryList.add(new GroceryItem("milk", 4));
-        groceryList.add(new GroceryItem("beb: true!", 0.5));
-
-        HomeworkList homeworkList = new HomeworkList("jonah1");
-        homeworkList.add(new HomeworkItem("assignment 1", "21-12-2016"));
-        homeworkList.add(new HomeworkItem("test 1", "21-11-2016"));
-        homeworkList.add(new HomeworkItem("seminar", "21-2-2016"));
-        homeworkList.add(new HomeworkItem("assignment 2", "1-12-2002"));
-        homeworkList.add(new HomeworkItem("assignment 1", "21-12-2016"));
-        homeworkList.add(new HomeworkItem("test 1", "21-11-2016"));
-        homeworkList.add(new HomeworkItem("seminar", "21-2-2016"));
-        homeworkList.add(new HomeworkItem("assignment 2", "1-12-2002"));
-        homeworkList.add(new HomeworkItem("assignment 1", "21-12-2016"));
-        homeworkList.add(new HomeworkItem("test 1", "21-11-2016"));
-        homeworkList.add(new HomeworkItem("seminar", "21-2-2016"));
-        homeworkList.add(new HomeworkItem("assignment 2", "1-12-2002"));
-
+        dbh = new DBHelper(this);
         masterList = new MasterList();
-        masterList.add(groceryList);
-        masterList.add(homeworkList);
     }
 
 
@@ -63,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void fixLists() {
         ListView llv = (ListView) findViewById(R.id.listsListView);
+
+        masterList = dbh.readlists();
         mla = new MasterListAdapter(this, android.R.layout.simple_list_item_1, masterList);
         llv.setAdapter(mla);
 
@@ -73,12 +53,10 @@ public class MainActivity extends AppCompatActivity {
                 current = mla.getItem(position);
                 TextView titlehome = (TextView) findViewById(R.id.masterTitleTextView);
                 titlehome.setText("Current list: " + current.getList_name());
-
-            ListView glv = (ListView) findViewById(R.id.genericListView);
-
-            aa = current.getAdapter(getBaseContext());
-            glv.setAdapter(aa);
-            aa.notifyDataSetChanged();
+                ListView glv = (ListView) findViewById(R.id.genericListView);
+                aa = current.getAdapter(getBaseContext());
+                glv.setAdapter(aa);
+                aa.notifyDataSetChanged();
             }
         });
 
