@@ -68,7 +68,7 @@ public class DBHelper extends SQLiteOpenHelper {
                         break;
                     }
                 }
-                listdata.add(listdata);
+                listdata.add(dblist);
                 dblist.add(listdata);
             }
             while(crs.moveToNext());
